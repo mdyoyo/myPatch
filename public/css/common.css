@@ -1,0 +1,45 @@
+.page-tile{
+    font-size: 20px;
+}
+.page-nav{
+    padding:10px;
+    background-color:#ccc;
+    margin-bottom:30px;
+}
+.nav-username,
+.nav-register,
+.nav-login{
+    margin:0 10px;
+}
+
+.register_check_hint_error{
+    display:block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #a94442;
+}
+.register_check_hint_ok{
+    display:block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #3c763d;
+}
+.my_help_block{
+    display:block;
+    color:#989898;
+}
+.my_register_check_hint_error{
+    display:block;
+    color: #a94442;
+}
+.my_register_check_hint_ok{
+    display:block;
+    color: #3c763d;
+}
+.base_manage_add_new_version {
+    background-color: #87b87f !important;
+    color: #ffffff;
+    border: 0px;
+    margin-left: 20px;
+    padding: 5px 10px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+    <div>
+        <button type="button" id="add" onclick="doAdd();">添加新版本</button>
+    </div>
+    <script>
+        function doAdd() {
+            $.getJSON("publishDiary", function(data) {
+                if(data.status) {
+                    alert("成功发布！")
+                } else{
+                    alert("发布失败！");
+                }
+            });
+        }
+    </script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

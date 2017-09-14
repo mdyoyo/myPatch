@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Patch详情</title>
+
+    <meta name="description" content="Common form elements and layouts" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.css" />
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="/assets/css/jquery-ui.custom.css" />
+    <link rel="stylesheet" href="/assets/css/chosen.css" />
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/assets/css/ace-fonts.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-ie.css" />
+    <![endif]-->
+
+    <!-- inline styles related to this page -->
+
+    <!-- ace settings handler -->
+    <script src="/assets/js/ace-extra.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="/assets/js/html5shiv.js"></script>
+    <script src="/assets/js/respond.js"></script>
+    <![endif]-->
+</head>
+<body class="no-skin">
+<!-- #section:basics/navbar.layout -->
+<%- include ../templates/topbar_nav %>
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+    <!-- #section:basics/sidebar -->
+    <%- include ../templates/sidebar_nav %>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>Patch详情</h1>
+                </div><!-- /.page-header -->
+                <div class="row">
+                    <% if (patch == null) { %>
+                    <div class="col-xs-12">
+                        <h5 class="widget-title bigger lighter">
+                            此版本暂无信息。
+                        </h5>
+                    </div>
+                    <% } else {%>
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="widget-box">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title">基本信息</h4>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <ul class="list-unstyled spaced">
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>版本号:&nbsp;&nbsp;&nbsp;</strong><%= patch.version %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>基线版本号:&nbsp;&nbsp;&nbsp;</strong><%= patch.base_version %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>大小:&nbsp;&nbsp;&nbsp;</strong><%= patch.size %>KB
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>描述:&nbsp;&nbsp;&nbsp;</strong><%= patch.desc %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>创建时间:&nbsp;&nbsp;&nbsp;</strong>
+                                                            <%= moment(new Date(parseInt(patch.create_time) * 1000)).locale('zh-cn').format('lll') %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>上传人:&nbsp;&nbsp;&nbsp;</strong><%= patch.op_user %>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- /.col -->
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <form class="form-horizontal" role="form">
+                            <% if (user.level === 1) { %>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="widget-box collapsed">
+                                        <div class="widget-header widget-header-flat">
+                                            <h4 class="widget-title">下发</h4>
+
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="widget-body" style="display: none;">
+                                            <div class="widget-main">
+                                                <form>
+                                                    <% if (patch.status === 1) { %>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            此版本已经下发过.
+                                                        </span>
+                                                    </fieldset>
+                                                    <% } else { %>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            <label class="control-label bolder blue">全量下发:&nbsp;&nbsp;</label>
+                                                            将patch应用到所有安装了基线版本的用户设备.
+                                                        </span>
+                                                        <span class="help-block">
+                                                            <label class="control-label bolder blue">条件下发:&nbsp;&nbsp;</label>
+                                                            根据设定的参数,在所有安装了基线版本的设备中,只将patch应用到符合条件的设备上.
+                                                        </span>
+                                                        <div class="control-group">
+
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input name="dispatch" id="toAll" type="radio"
+                                                                           class="ace" checked="" value="all">
+                                                                    <span class="lbl"> 全量下发</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="radio">
+                                                                <label>
+                                                                    <input name="dispatch" id="toPart" type="radio"
+                                                                           class="ace" value="part">
+                                                                    <span class="lbl"> 条件下发</span>
+                                                                    <div id="part_specify" style="display: none;">
+                                                                        <select style="margin: 10px 10px 10px 10px;" id="specify">
+                                                                            <option value="full_deviceId">设备号</option>
+                                                                            <option value="last_deviceId">设备尾号</option>
+                                                                            <option value="android_version">android版本</option>
+                                                                        </select>
+                                                                        <input style="min-width: 200px; margin: 10px 0 10px 10px;" type="text"
+                                                                                placeholder="例如: 51eaea54dc187899" id="input_text">
+                                                                    </div>
+                                                                </label>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </fieldset>
+
+                                                    <div class="center">
+                                                        <button type="button" class="btn btn-sm btn-success">
+                                                            提交
+                                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                        </button>
+                                                    </div>
+                                                    <% } %>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <% if (patch.link != null && patch.link.length > 0) { %>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="widget-box collapsed">
+                                        <div class="widget-header widget-header-flat">
+                                            <h4 class="widget-title">下载</h4>
+
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="widget-body" style="display: none;">
+                                            <div class="widget-main">
+                                                <form>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            <textarea id="download_link"
+                                                                      class="autosize-transition form-control"
+                                                                      style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 52px;"
+                                                                      readonly><%= patch.link %></textarea>
+                                                        </span>
+                                                    </fieldset>
+                                                    <div class="center">
+                                                        <%
+                                                            var rawUrl = patch.link;
+                                                            var lastIndex = rawUrl.lastIndexOf('/');
+                                                            var filepath = rawUrl.substring(lastIndex + 1);
+                                                        %>
+                                                        <button type="button" class="btn btn-sm btn-info" id="download"
+                                                                onclick="window.location.href='/upload/<%= filepath %>'">
+                                                            直接下载
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="widget-box collapsed">
+                                        <div class="widget-header widget-header-flat">
+                                            <h4 class="widget-title">查看数据</h4>
+
+                                            <div class="widget-toolbar">
+                                                <a href="#" data-action="collapse">
+                                                    <i class="ace-icon fa fa-chevron-down"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="widget-body" style="display: none;">
+                                            <div class="widget-main">
+                                                <form>
+                                                    <% if (patch.status === 0) { %>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            此版本还未下发,暂无数据.
+                                                        </span>
+                                                    </fieldset>
+                                                    <% } else { %>
+                                                    <div class="center">
+                                                        <button type="button" class="btn btn-sm btn-success"
+                                                                style="margin-right: 20px;"
+                                                                onclick="window.location.href='/statistics'">
+                                                            点击跳转至数据统计页面查看最新数据.
+                                                        </button>
+                                                    </div>
+                                                    <% } %>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <% } %>
+                </div>
+                <!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <!-- #section:basics/footer -->
+            <div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+                &nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+                                <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                            </a>
+
+							<a href="#">
+                                <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                            </a>
+
+							<a href="#">
+                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                            </a>
+						</span>
+            </div>
+
+            <!-- /section:basics/footer -->
+        </div>
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/js/jquery1x.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+<script type="text/javascript">
+    if('ontouchstart' in document.documentElement) document.write("<script src='/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+</script>
+<script src="/assets/js/bootstrap.js"></script>
+
+<!-- page specific plugin scripts -->
+
+<!--[if lte IE 8]>
+<script src="/assets/js/excanvas.js"></script>
+<![endif]-->
+<script src="/assets/js/jquery-ui.custom.js"></script>
+<script src="/assets/js/jquery.ui.touch-punch.js"></script>
+<script src="/assets/js/chosen.jquery.js"></script>
+<script src="/assets/js/jquery.knob.js"></script>
+<script src="/assets/js/autosize.js"></script>
+<script src="/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+<script src="/assets/js/jquery.maskedinput.js"></script>
+<script src="/assets/js/bootstrap-tag.js"></script>
+
+<!-- ace scripts -->
+<script src="/assets/js/ace/elements.scroller.js"></script>
+<script src="/assets/js/ace/elements.fileinput.js"></script>
+<script src="/assets/js/ace/elements.typeahead.js"></script>
+<script src="/assets/js/ace/elements.aside.js"></script>
+<script src="/assets/js/ace/ace.js"></script>
+<script src="/assets/js/ace/ace.ajax-content.js"></script>
+<script src="/assets/js/ace/ace.touch-drag.js"></script>
+<script src="/assets/js/ace/ace.sidebar.js"></script>
+<script src="/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+<script src="/assets/js/ace/ace.submenu-hover.js"></script>
+<script src="/assets/js/ace/ace.widget-box.js"></script>
+<script src="/assets/js/ace/ace.widget-on-reload.js"></script>
+
+<!-- inline scripts related to this page -->
+<script type="text/javascript">
+
+    jQuery(function($) {
+
+        if(!ace.vars['touch']) {
+            $('.chosen-select').chosen({allow_single_deselect:true});
+            //resize the chosen on window resize
+
+            $(window)
+                    .off('resize.chosen')
+                    .on('resize.chosen', function() {
+                        $('.chosen-select').each(function() {
+                            var $this = $(this);
+                            $this.next().css({'width': $this.parent().width()});
+                        })
+                    }).trigger('resize.chosen');
+        }
+        $('[data-rel=tooltip]').tooltip({container:'body'});
+        $('[data-rel=popover]').popover({container:'body'});
+
+        autosize($('textarea[class*=autosize]'));
+
+        $('textarea.limited').inputlimiter({
+            remText: '%n character%s remaining...',
+            limitText: 'max allowed : %n.'
+        });
+
+        $.mask.definitions['~']='[+-]';
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $(".ace").change(function () {
+            var selected = $("input[name='dispatch']:checked").val();
+            if (selected === 'all') {
+                $('#part_specify').hide();
+            } else {
+                $('#part_specify').show();
+            }
+        });
+        $("#specify").change(function () {
+            //code...
+            var checkValue = $("#specify").val();
+            var inputText = $("#input_text");
+            if (checkValue === 'full_deviceId') {
+                inputText.attr('placeholder', '例如: 51eaea54dc187899');
+            } else if (checkValue === 'last_deviceId') {
+                inputText.attr('placeholder', '例如: 1');
+            } else if (checkValue === 'android_version') {
+                inputText.attr('placeholder', '例如: 7.0.0');
+            }
+        });
+    });
+    function doDownload() {
+        var url = $('#download_link').val();
+        var data = {
+            url : url
+        }
+        $.getJSON('/downloadPatch', data, function (data) {
+            if (!data.status) {
+                alert('下载失败,请重试');
+            }
+        });
+    }
+</script>
+</body>
+</html>

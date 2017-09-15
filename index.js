@@ -33,36 +33,38 @@ app.use(session({
     saveUninitialized: false //是否自动保存未初始化的session
 }));
 //响应首页get请求
-var versionRouter = require('./routes/version.js');
+var baseRouter = require('./routes/base.js');
+var patchRouter = require('./routes/patch.js');
+var dispatchRouter = require('./routes/dispatch.js');
 var userRouter = require('./routes/user.js');
 
-app.post('/baseDetail/api/Upload', upload.single('fileUploader'), versionRouter.uploadPatch);
-app.get('/upload/:filename', versionRouter.checkDownload);
+//下载不需要登录
+app.get('/upload/:filename', patchRouter.checkDownload);
 
 app.get('/checkUsername_register', userRouter.checkNameRepeat);//检查注册用户名是否重复
 app.get('/register', userRouter.getRegisterPage); //注册页
 app.post('/register', userRouter.doRegisterUser); //处理注册
 app.get('/login', userRouter.getLoginPage);     //登录页
-app.get('/check_login', userRouter.checkLogin); //检查密码
 
+app.get('/check_login', userRouter.checkLogin); //检查密码
 app.use('/', userRouter.checkNoLogin);//校验登录态
-app.get("/main", function(req, resp) {
-    resp.render('main', {
-        user: null
-    });
-});
 
 /**版本管理**/
-app.get("/", versionRouter.showBaseList);
-app.get("/version_manage", versionRouter.showBaseList);
-app.get('/checkVersionExisted', versionRouter.checkVersionExisted);
-app.get('/addBaseVersion', versionRouter.addNewBaseVersion);
+app.get("/", baseRouter.showBaseList);
+app.get("/version_manage", baseRouter.showBaseList);
+app.get('/checkVersionExisted', baseRouter.checkVersionExisted);
+app.get('/addBaseVersion', baseRouter.addNewBaseVersion);
+app.use("/baseDetail/:_baseVersion",baseRouter.getPatchListInfo);
+app.get("/baseDetail/:_baseVersion", baseRouter.showBaseDetail);
 
-app.use("/baseDetail/:_baseVersion",versionRouter.getPatchListInfo);
-app.get("/baseDetail/:_baseVersion", versionRouter.showBaseDetail);
+app.post('/baseDetail/api/Upload', upload.single('fileUploader'),
+    patchRouter.uploadPatch);
+app.post('/uploadPatchInfo', upload.single('patchInfoUploader'),
+    patchRouter.uploadPatchInfo);
+app.get("/patchDetail/:_patchVersion", patchRouter.showPatchDetail);
+app.get("/check_patch_ver", patchRouter.checkPatchVersion);
 
-app.get("/patchDetail/:_patchVersion", versionRouter.showPatchDetail);
-app.get("/check_patch_ver", versionRouter.checkPatchVersion);
+app.get("/addNewDispatch", dispatchRouter.addNewDispatch);
 
 /**数据统计**/
 app.get("/statistics", function(req, resp) {
@@ -77,7 +79,6 @@ app.get('/user_detail', userRouter.showInfo);   //
 app.get('/user_info_edit', userRouter.editInfo);
 app.get('/edit_pwd', userRouter.changePwd);
 
-//http.createServer(app).listen('3000', '127.0.0.1');
 http.createServer(app).listen(CONFIG.port, CONFIG.server,
     function () {
         console.log('app is running on %s at port %s', CONFIG.server, CONFIG.port);

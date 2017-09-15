@@ -33,4 +33,13 @@ PatchDAO.prototype.findOneVersion = function (obj, success, fail) {
     }).then(success).catch(fail);
 };
 
+PatchDAO.prototype.updatePatchInfo = function (obj, success, fail) {
+    Patch.update({
+        info_addr: obj.addr
+    }, {
+        where: {
+            version: obj.version
+        }
+    }).then(success).catch(fail);
+};
 module.exports = new PatchDAO();

@@ -79,10 +79,13 @@
                                                         <li class="muted">
                                                             <i class="ace-icon fa fa-angle-right bigger-110"></i>
                                                             <strong>版本号:&nbsp;&nbsp;&nbsp;</strong><%= patch.version %>
+                                                            <input hidden id="hide_patch_version" value="<%= patch.version %>">
                                                         </li>
                                                         <li class="muted">
                                                             <i class="ace-icon fa fa-angle-right bigger-110"></i>
                                                             <strong>基线版本号:&nbsp;&nbsp;&nbsp;</strong><%= patch.base_version %>
+                                                            <input hidden id="hide_base_version" value="<%= patch.base_version %>">
+
                                                         </li>
                                                         <li class="muted">
                                                             <i class="ace-icon fa fa-angle-right bigger-110"></i>
@@ -111,8 +114,47 @@
                         </div>
                     </div>
                     <div class="col-xs-6">
-                        <form class="form-horizontal" role="form">
+                        <div class="form-horizontal" >
                             <% if (user.level === 1) { %>
+                            <form id="addForm" class="form-horizontal" role="form"
+                                  enctype="multipart/form-data"
+                                  method="post" action="/uploadPatchInfo">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="widget-box collapsed">
+                                            <div class="widget-header  widget-header-flat">
+                                                <h4 class="widget-title">上传patch配置信息</h4>
+
+                                                <div class="widget-toolbar">
+                                                    <a href="#" data-action="collapse">
+                                                        <i class="ace-icon fa fa-chevron-down"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="widget-body" style="display: none;">
+                                                <div class="widget-main">
+                                                    <div class="form-group">
+                                                        <div class="col-xs-12">
+                                                            <input multiple="" type="file" id="id-input-file-3"
+                                                                   name="patchInfoUploader"/>
+                                                            <!-- /section:custom/file-input -->
+                                                        </div>
+                                                    </div>
+                                                    <input type="text" hidden name="patchVer"
+                                                           value="<%= patch.version %>">
+                                                    <div class="center">
+                                                        <button type="submit" name="submit" id="submit_ver" class="btn btn-sm btn-success">
+                                                            提交
+                                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="widget-box collapsed">
@@ -148,7 +190,7 @@
 
                                                             <div class="radio">
                                                                 <label>
-                                                                    <input name="dispatch" id="toAll" type="radio"
+                                                                    <input name="dispatch" type="radio"
                                                                            class="ace" checked="" value="all">
                                                                     <span class="lbl"> 全量下发</span>
                                                                 </label>
@@ -156,27 +198,25 @@
 
                                                             <div class="radio">
                                                                 <label>
-                                                                    <input name="dispatch" id="toPart" type="radio"
+                                                                    <input name="dispatch" type="radio"
                                                                            class="ace" value="part">
                                                                     <span class="lbl"> 条件下发</span>
                                                                     <div id="part_specify" style="display: none;">
                                                                         <select style="margin: 10px 10px 10px 10px;" id="specify">
-                                                                            <option value="full_deviceId">设备号</option>
-                                                                            <option value="last_deviceId">设备尾号</option>
-                                                                            <option value="android_version">android版本</option>
+                                                                            <option value="10">设备号</option>
+                                                                            <option value="11">设备尾号</option>
+                                                                            <option value="12">android版本</option>
                                                                         </select>
                                                                         <input style="min-width: 200px; margin: 10px 0 10px 10px;" type="text"
                                                                                 placeholder="例如: 51eaea54dc187899" id="input_text">
                                                                     </div>
                                                                 </label>
                                                             </div>
-
                                                         </div>
-
                                                     </fieldset>
 
                                                     <div class="center">
-                                                        <button type="button" class="btn btn-sm btn-success">
+                                                        <button type="button" class="btn btn-sm btn-success" onclick="doDispatch();">
                                                             提交
                                                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
                                                         </button>
@@ -246,7 +286,6 @@
 
                                         <div class="widget-body" style="display: none;">
                                             <div class="widget-main">
-                                                <form>
                                                     <% if (patch.status === 0) { %>
                                                     <fieldset>
                                                         <span class="help-block">
@@ -262,13 +301,13 @@
                                                         </button>
                                                     </div>
                                                     <% } %>
-                                                </form>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                     <% } %>
                 </div>
@@ -387,6 +426,21 @@
         });
 
         $.mask.definitions['~']='[+-]';
+
+        $('#id-input-file-3').ace_file_input({
+            style: 'well',
+            btn_choose: '将文件拖拽到此处或点击上传',
+            btn_change: null,
+            no_icon: null,
+            droppable: true,
+            thumbnail: 'small',//large | fit
+            preview_error: function (filename, error_code) {
+            }
+        }).on('change', function () {
+//            var fileList = $(this).data('ace_input_files');
+//            console.log(fileList);
+//            console.log($(this).data('ace_input_method'));
+        });
     });
 </script>
 <script>
@@ -400,26 +454,44 @@
             }
         });
         $("#specify").change(function () {
-            //code...
-            var checkValue = $("#specify").val();
+            var checkValue = parseInt($("#specify").val());
             var inputText = $("#input_text");
-            if (checkValue === 'full_deviceId') {
+            if (checkValue === 10) {
                 inputText.attr('placeholder', '例如: 51eaea54dc187899');
-            } else if (checkValue === 'last_deviceId') {
+            } else if (checkValue === 11) {
                 inputText.attr('placeholder', '例如: 1');
-            } else if (checkValue === 'android_version') {
+            } else if (checkValue === 12) {
                 inputText.attr('placeholder', '例如: 7.0.0');
             }
         });
     });
-    function doDownload() {
-        var url = $('#download_link').val();
-        var data = {
-            url : url
+    function doDispatch() {
+        var patch_version = $('#hide_patch_version').val();
+        var base_version = $('#hide_base_version').val();
+        var selected = $("input[name='dispatch']:checked").val();
+        var typeChecked;
+        var paramsInput;
+        if (selected === 'all') {
+            //全量下发
+            typeChecked = 0;
+            paramsInput = "";
+        } else {
+            //条件下发
+            typeChecked = $("#specify").val();
+            paramsInput = $("#input_text").val();
         }
-        $.getJSON('/downloadPatch', data, function (data) {
+
+        var data = {
+            patch_version: patch_version,
+            base_version: base_version,
+            dispatch_type: typeChecked,
+            dispatch_params: paramsInput
+        }
+        $.getJSON('/addNewDispatch', data, function (data) {
             if (!data.status) {
-                alert('下载失败,请重试');
+                alert('下发失败,请重试');
+            } else {
+                window.location.href = '/patchDetail/' + data.patch_version;
             }
         });
     }

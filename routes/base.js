@@ -26,7 +26,7 @@ exports.checkVersionExisted = function(req, resp) {
     BaseDAO.findOneVersion(req.query.versionCode, function(result) {
         console.log('find version success, result=', result);
         return resp.send({
-            'status': result != null
+            'status': result == null
         });
     }, function (err) {
         console.log('find base version failed.', err.message);

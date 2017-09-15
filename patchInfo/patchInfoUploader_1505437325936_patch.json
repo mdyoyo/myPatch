@@ -1,0 +1,48 @@
+{
+  "ret": 0,
+  "url": "replace_url",
+  "new": [
+    {
+      "name": "classes2.dex",
+      "md5": "XxFUDAWZAolO0LHkJwdT/7gqAJbw4J+jYur5N+LVbBo5oGjCrQSuC7uyp4Fu+z73Z0JIQ8iVQ/REgMLfg4VvvUTPiFZ7i/AR8XBZh4efvsHbfcxm2KwYwvHstXHkBNEWw5WJcbasanN4uNnR4I2YkOdm1vC+39sE5kvZlie15O+ZaBoh3SaZSQi71/LSizY6fhJzHFiTW0YUxMiIqxwEjGjXntI1GbDSYKMkqv6J5FjRomzdSr8p4LILsTC9kNgSkxTts2qBOtoKGQUNxur22LIEYmb7uK6bZs/oeH0GxndsF67mQEcdnIXPFyufYAJOVfQjuLFnj46wLgPtIGjsBw=="
+    },
+    {
+      "name": "classes3.dex",
+      "md5": "GvClOFAH2BioV2QPhPSxZwPRmthm01a8KIE5snENzh7IB7nAfROMpp8EGhAGjooKUx/VgBxMm16+XIccqtvi3SguuB12Pe2OAvb3JXyzDf1N59EnxDECkLDDBpIqdjzckyQiguN/staPLXTEn9cVkFzHK+EKIloTy4klxnngP4tFwS+2VxKFRYBruYvCP3wXlBqnARUMwO6RuLE9S6blsGxF9TSpkuDmgwQ4aZamhjKjQu3ZHhF+6ucboK2AnpSONdbYIfr+tGCQBb1WpGNNpS5RywC4MdqyMCMsNUHKWqa1Z0XI/QWRWDImcrUK6X8rk1sqh4k1kJxQ2bk/4L97/Q=="
+    },
+    {
+      "name": "classes4.dex",
+      "md5": "jHc7awZb8N+s4Q7XvVo+ev/UqS8l1KrE9a6mDPcaUOOwyVmy5yL5O5NjyV1Nq/Tzy2ajNa9SwVr+5uHhFctsmF0vQQ4aturK/MAF72wIQ6owt85OjiZ28p+jtciG/H4v166byTQWT2YumuSDl1Z0gxbUzTY+QWY4ztZ9dSWqBNqCuGwTbZgWa1fSll8jZQ6Kn3afSBoXv9J6CMtN0E4bCOtXvxvnPydfWJnxg/3nGhJqKg/9UsEB3oxWi5wZ4z3DT6ixKYF4ge0iJu3o855KjLImdqJP8p+sFCZZe66WsIoyiltYqtGPgnHEhcafGO3JYyL7/RqsACwQ7yu3zq1i4w=="
+    },
+    {
+      "name": "classes.dex",
+      "md5": "gsGNRrJezMAu87hk1Znn4wPsMLv7Y1uSjgiIT9XROWqIDZqV/fejTG/sjfqe6GgMIQvW9b/KZJVexLlQ/RN0pbk2Nphbs3IYaHl9RpsUN1nWEEyjK2fIzNywOpndc/ZcP6P+kMZCZF8rEeZ+tDOI88Vc5tv9dXxwU9HyNEW68PpBSQjamPgPBZ6uqYEUdP5P1EL7P8qk3iKIRghu18/30C4dQK3bNTsuoKH5lTa3glMGvOmQw0gG4iSWm4k9lT117lYBluOOeeZsIPnry8Mrvtbfd+xtLKVEMrl6VZOKzLEgcR3HFIPtrMpkGdf7qO6yDssQ8vDVBUWnC/DOna33Yw=="
+    }
+  ],
+  "old": [
+    {
+      "name": "classes2.dex",
+      "md5": "7426c0137582d2fd6a68d09d1879ee4c"
+    },
+    {
+      "name": "classes3.dex",
+      "md5": "5abee22ac0a208ccc1bd503c1eae21f7"
+    },
+    {
+      "name": "classes4.dex",
+      "md5": "a62376e548c9b8b98f863ce2c7813101"
+    },
+    {
+      "name": "classes.dex",
+      "md5": "660775b28cad44fbf62821c267022e26"
+    }
+  ],
+  "diffMethod": 1,
+  "patchType": 1,
+  "isForceInstall": true,
+  "version": "3206",
+  "versionName": "3.2.6",
+  "open": 1,
+  "patchPackageMd5": "c3b88ec9dd4dc7dd5c45770bc3a7b721",
+  "size": 83156
+}

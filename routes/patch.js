@@ -2,6 +2,7 @@ var BaseDAO = require('../dao/BaseDAO.js');
 var PatchDAO = require('../dao/PatchDAO.js');
 var CONFIG = require('../config.js');
 var moment = require('moment');
+var fs = require('fs');
 
 /**patch**/
 exports.showPatchDetail = function(req, resp) {
@@ -11,11 +12,20 @@ exports.showPatchDetail = function(req, resp) {
     var prefix = CONFIG.prefix + CONFIG.server + ':' + CONFIG.port + '/';
     PatchDAO.findOneVersion(patchVersion, function (result) {
         console.log('find patch by version success');
+        var patch_info;
+        if (result.info_addr != null) {
+            patch_info = JSON.parse(fs.readFileSync(result.info_addr));
+        } else {
+            patch_info = null;
+        }
+        console.log(result);
+
         resp.render('version/patchDetail', {
             user: req.session.user,
             patch: result,
             moment: moment,
-            filePrefix: prefix
+            filePrefix: prefix,
+            patchInfo: patch_info
         });
     }, function (err) {
         console.log('find patch by version failed', err.message);
@@ -23,7 +33,8 @@ exports.showPatchDetail = function(req, resp) {
             user: req.session.user,
             patch: null,
             moment: moment,
-            filePrefix: prefix
+            filePrefix: prefix,
+            patchInfo: null
         });
     });
 

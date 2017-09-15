@@ -85,7 +85,6 @@
                                                             <i class="ace-icon fa fa-angle-right bigger-110"></i>
                                                             <strong>基线版本号:&nbsp;&nbsp;&nbsp;</strong><%= patch.base_version %>
                                                             <input hidden id="hide_base_version" value="<%= patch.base_version %>">
-
                                                         </li>
                                                         <li class="muted">
                                                             <i class="ace-icon fa fa-angle-right bigger-110"></i>
@@ -112,6 +111,74 @@
                                 </div>
                             </div><!-- /.col -->
                         </div>
+                        <% if (patchInfo != null) { %>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="widget-box collapsed">
+                                    <div class="widget-header widget-header-flat">
+                                        <h4 class="widget-title">patch配置信息</h4>
+
+                                        <div class="widget-toolbar">
+                                            <a href="#" data-action="collapse">
+                                                <i class="ace-icon fa fa-chevron-down"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-body">
+                                        <div class="widget-main">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <ul class="list-unstyled spaced">
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>version:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.version %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>versionName:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.versionName %>
+                                                            <input hidden id="hide_patchInfo_version" value="<%= patchInfo.versionName %>">
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>diffMethod:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.diffMethod %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>patchType:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.patchType %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>patchPackageMd5:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.patchPackageMd5 %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>isForceInstall:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.isForceInstall %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>open:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.open %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>size:&nbsp;&nbsp;&nbsp;</strong><%= patchInfo.size %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>new:&nbsp;&nbsp;&nbsp;</strong><%= JSON.stringify(patchInfo.new) %>
+                                                        </li>
+                                                        <li class="muted">
+                                                            <i class="ace-icon fa fa-angle-right bigger-110"></i>
+                                                            <strong>old:&nbsp;&nbsp;&nbsp;</strong><%= JSON.stringify(patchInfo.old) %>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-horizontal" >
@@ -134,6 +201,7 @@
 
                                             <div class="widget-body" style="display: none;">
                                                 <div class="widget-main">
+                                                    <% if (patch.status === 0) { %>
                                                     <div class="form-group">
                                                         <div class="col-xs-12">
                                                             <input multiple="" type="file" id="id-input-file-3"
@@ -149,12 +217,20 @@
                                                             <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
                                                         </button>
                                                     </div>
+                                                    <% } else { %>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            此版本已经下发过,不能再上传配置信息.
+                                                        </span>
+                                                    </fieldset>
+                                                    <%  }%>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="widget-box collapsed">
@@ -174,6 +250,12 @@
                                                     <fieldset>
                                                         <span class="help-block">
                                                             此版本已经下发过.
+                                                        </span>
+                                                    </fieldset>
+                                                    <% } else if (patch.info_addr === null) { %>
+                                                    <fieldset>
+                                                        <span class="help-block">
+                                                            还未上传配置信息,请先上传配置信息.
                                                         </span>
                                                     </fieldset>
                                                     <% } else { %>
@@ -467,6 +549,11 @@
     });
     function doDispatch() {
         var patch_version = $('#hide_patch_version').val();
+        var patch_info_version = $('#hide_patchInfo_version').val();
+//        if (patch_version != patch_info_version) {
+//            alert('patch版本与配置信息不符,请检查');
+//            return;
+//        }
         var base_version = $('#hide_base_version').val();
         var selected = $("input[name='dispatch']:checked").val();
         var typeChecked;

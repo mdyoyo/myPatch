@@ -67,6 +67,9 @@ app.get("/check_patch_ver", patchRouter.checkPatchVersion);
 app.get("/addNewDispatch", dispatchRouter.addNewDispatch);
 
 /**数据统计**/
+app.get("getPatchInfo", function (req, resp) {
+
+});
 app.get("/statistics", function(req, resp) {
     resp.render('data/visualize', {
         user: null

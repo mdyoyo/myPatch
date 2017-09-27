@@ -12,4 +12,12 @@ DispatchDAO.prototype.addNewDispatch = function(obj, success, fail) {
     }).then(success).catch(fail);
 };
 
+DispatchDAO.prototype.findByBaseVersion = function (obj, success, fail) {
+    Dispatch.findAll({
+        where: {
+            base_version: obj.toString()
+        }
+    }).then(success).catch(fail);
+};
+
 module.exports = new DispatchDAO();

@@ -95,7 +95,18 @@ exports.checkDownload = function (req, resp) {
         console.log(err);
     });
 };
-
+exports.getPatchListInfo = function(req, resp, next) {
+    //先查询到patch list
+    var baseVersion = req.params._baseVersion;
+    PatchDAO.getPatchList(baseVersion, function(result) {
+        console.log('get patch list success', result.length);
+        req.patchList = result;
+        next();
+    }, function (err) {
+        console.log('get patch list failed,', err.message);
+        return resp.redirect('/');
+    });
+};
 exports.uploadPatchInfo = function (req, resp) {
     var file = req.file;
     var patchVersion = req.body.patchVer;

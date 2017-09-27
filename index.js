@@ -40,7 +40,12 @@ var userRouter = require('./routes/user.js');
 
 //下载不需要登录
 app.get('/upload/:filename', patchRouter.checkDownload);
+app.use('/getDispatchInfo', dispatchRouter.getDispatchVer);
+app.get('/getDispatchInfo', dispatchRouter.getDispatchInfo);
+/**数据统计**/
+app.get("/getPatchAndroid", function (req, resp) {
 
+});
 app.get('/checkUsername_register', userRouter.checkNameRepeat);//检查注册用户名是否重复
 app.get('/register', userRouter.getRegisterPage); //注册页
 app.post('/register', userRouter.doRegisterUser); //处理注册
@@ -54,7 +59,7 @@ app.get("/", baseRouter.showBaseList);
 app.get("/version_manage", baseRouter.showBaseList);
 app.get('/checkVersionExisted', baseRouter.checkVersionExisted);
 app.get('/addBaseVersion', baseRouter.addNewBaseVersion);
-app.use("/baseDetail/:_baseVersion",baseRouter.getPatchListInfo);
+app.use("/baseDetail/:_baseVersion",patchRouter.getPatchListInfo);
 app.get("/baseDetail/:_baseVersion", baseRouter.showBaseDetail);
 
 app.post('/baseDetail/api/Upload', upload.single('fileUploader'),
@@ -66,10 +71,7 @@ app.get("/check_patch_ver", patchRouter.checkPatchVersion);
 
 app.get("/addNewDispatch", dispatchRouter.addNewDispatch);
 
-/**数据统计**/
-app.get("getPatchInfo", function (req, resp) {
 
-});
 app.get("/statistics", function(req, resp) {
     resp.render('data/visualize', {
         user: null

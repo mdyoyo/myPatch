@@ -28,7 +28,8 @@ PatchDAO.prototype.addNewPatch = function (obj, success, fail) {
 PatchDAO.prototype.findOneVersion = function (obj, success, fail) {
     Patch.findOne({
         where: {
-            version: obj.toString()
+            version: obj.toString(),
+            status: 1
         }
     }).then(success).catch(fail);
 };

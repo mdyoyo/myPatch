@@ -53,18 +53,7 @@ exports.addNewBaseVersion = function(req, resp) {
         })
     });
 };
-exports.getPatchListInfo = function(req, resp, next) {
-    //先查询到patch list
-    var baseVersion = req.params._baseVersion;
-    PatchDAO.getPatchList(baseVersion, function(result) {
-        console.log('get patch list success', result.lengths);
-        req.patchList = result;
-        next();
-    }, function (err) {
-        console.log('get patch list failed,', err.message);
-        return resp.redirect('/');
-    });
-};
+
 exports.showBaseDetail =  function(req, resp) {
     console.log('基线包详情页');
     var baseVersion = req.params._baseVersion;

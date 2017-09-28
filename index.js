@@ -52,11 +52,6 @@ app.get('/checkUsername_register', userRouter.checkNameRepeat);//检查注册用
 app.get('/register', userRouter.getRegisterPage); //注册页
 app.post('/register', userRouter.doRegisterUser); //处理注册
 app.get('/login', userRouter.getLoginPage);     //登录页
-//app.get("/statistics", function (req, resp) {
-//    return resp.render('data/visualize', {
-//        user: null
-//    });
-//});
 
 app.get('/check_login', userRouter.checkLogin); //检查密码
 app.use('/', userRouter.checkNoLogin);//校验登录态
@@ -85,6 +80,7 @@ app.get('/user_info_edit', userRouter.editInfo);
 app.get('/edit_pwd', userRouter.changePwd);
 /**数据统计**/
 app.get("/statistics/:_patchVersion", statRouter.showStatByPatchVersion);
+
 http.createServer(app).listen(CONFIG.port, CONFIG.server,
     function () {
         console.log('app is running on %s at port %s', CONFIG.server, CONFIG.port);

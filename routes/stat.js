@@ -7,7 +7,11 @@ exports.receiveAnEvent = function (req, resp) {
     console.log('收到上报');
     var bodyParams = req.body.data;
     console.log('参数,', bodyParams);
-    StatDAO.insertMultiVersion(bodyParams, function (result) {
+    var jsonString = JSON.stringify(bodyParams);
+    console.log('trans ,', jsonString);
+    var jsonObj = JSON.parse(jsonString);
+    console.log('trans to jsonArray,', jsonObj);
+    StatDAO.insertMultiVersion(jsonString, function (result) {
         console.log('add stat data to db success', result);
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: 0 }));

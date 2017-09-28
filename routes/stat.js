@@ -11,7 +11,7 @@ exports.receiveAnEvent = function (req, resp) {
     console.log('trans ,', jsonString);
     var jsonObj = JSON.parse(jsonString);
     console.log('trans to jsonArray,', jsonObj);
-    StatDAO.insertMultiVersion(jsonString, function (result) {
+    StatDAO.insertMultiVersion(jsonObj, function (result) {
         console.log('add stat data to db success', result);
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: 0 }));

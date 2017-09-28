@@ -10,13 +10,22 @@
     </div>
     <script>
         function doAdd() {
-            $.getJSON("publishDiary", function(data) {
-                if(data.status) {
-                    alert("成功发布！")
-                } else{
-                    alert("发布失败！");
-                }
-            });
+            console.log('hha');
+            var data = {
+                eventId: 'id_download_patch_success',         //事件id
+                key_appversion: '0.1.1', //基线版本
+                key_patch_version:  '0.1.11',   //patch版本
+                key_etime: '1504530468',       //上报时间
+                key_targetsdk: '19',    //target23
+                key_devid: '860146475868610',       //设备id
+                key_hw: 'sony_sony_e15i_4.4.4_KTU84P_eng.se.infra.20170110.154925_userdebug_release_keys',             //硬件信息
+                key_storage_size: '15561781248',//剩余可用空间
+                key_error_code: '204',   //错误码
+                key_error_msg: '',   //错误信息
+                key_patch_time: '',  //时间上报
+                patch_success_version: ''  //成功version
+            };
+            $.post('reportPatchLog', {data : data});
         }
     </script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>

@@ -43,3 +43,9 @@
     margin-left: 20px;
     padding: 5px 10px;
 }
+
+tr.myTr td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

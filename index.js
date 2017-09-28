@@ -45,12 +45,18 @@ app.get('/test', function (req, resp) {
 //下载和访问接口不需要登录
 app.get('/upload/:filename', patchRouter.checkDownload);
 app.use('/getPatchAndroid', dispatchRouter.getDispatchVer);
-app.get('/getPatchAndroid', dispatchRouter.getDispatchInfo);
+app.post('/getPatchAndroid', dispatchRouter.getDispatchInfo);
+
 app.post('/reportPatchLog', statRouter.receiveAnEvent); //事件上报
 app.get('/checkUsername_register', userRouter.checkNameRepeat);//检查注册用户名是否重复
 app.get('/register', userRouter.getRegisterPage); //注册页
 app.post('/register', userRouter.doRegisterUser); //处理注册
 app.get('/login', userRouter.getLoginPage);     //登录页
+//app.get("/statistics", function (req, resp) {
+//    return resp.render('data/visualize', {
+//        user: null
+//    });
+//});
 
 app.get('/check_login', userRouter.checkLogin); //检查密码
 app.use('/', userRouter.checkNoLogin);//校验登录态
@@ -69,15 +75,8 @@ app.post('/uploadPatchInfo', upload.single('patchInfoUploader'),
     patchRouter.uploadPatchInfo);
 app.get("/patchDetail/:_patchVersion", patchRouter.showPatchDetail);
 app.get("/check_patch_ver", patchRouter.checkPatchVersion);
-
 app.get("/addNewDispatch", dispatchRouter.addNewDispatch);
 
-
-app.get("/statistics", function(req, resp) {
-    resp.render('data/visualize', {
-        user: null
-    });
-});
 /**用户管理**/
 app.get('/user_manage', userRouter.getUsers);   //成员列表页(with分页)
 app.get('/deal_user', userRouter.dealUser);     //管理成员状态or权限
@@ -85,7 +84,7 @@ app.get('/user_detail', userRouter.showInfo);   //
 app.get('/user_info_edit', userRouter.editInfo);
 app.get('/edit_pwd', userRouter.changePwd);
 /**数据统计**/
-
+app.get("/statistics/:_patchVersion", statRouter.showStatByPatchVersion);
 http.createServer(app).listen(CONFIG.port, CONFIG.server,
     function () {
         console.log('app is running on %s at port %s', CONFIG.server, CONFIG.port);

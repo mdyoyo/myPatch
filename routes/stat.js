@@ -4,10 +4,10 @@
 var StatDAO = require('../dao/StatDAO.js');
 
 exports.receiveAnEvent = function (req, resp) {
-    console.log('收到一条上报');
+    console.log('收到上报');
     var bodyParams = req.body.data;
     console.log('参数,', bodyParams);
-    StatDAO.addNewVersion(bodyParams, function (result) {
+    StatDAO.insertMultiVersion(bodyParams, function (result) {
         console.log('add stat data to db success', result);
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: 0 }));
@@ -15,5 +15,32 @@ exports.receiveAnEvent = function (req, resp) {
         console.log('add stat data to db failed, ', err.message);
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: -1 }));
+    });
+};
+
+exports.showStatByPatchVersion = function (req, resp) {
+    console.log('显示统计信息');
+    var patchVer = req.params._patchVersion;
+    console.log('patch版本:', patchVer);
+    StatDAO.findByPatchVersion(patchVer, function (result) {
+        console.log('find stat by patch version success, ', result);
+        if (result == null) {
+            return resp.render('data/visualize', {
+                user: req.session.user,
+                statList: null
+            });
+        }
+        return resp.render('data/visualize', {
+            user: req.session.user,
+            statList: result
+        });
+    }, function (err) {
+        console.log('find stat by patch version success, ', result);
+        if (result == null) {
+            return resp.render('data/visualize', {
+                user: req.session.user,
+                statList: null
+            });
+        }
     });
 };

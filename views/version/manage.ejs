@@ -249,24 +249,6 @@
                                 {"bSortable": false}
                             ],
                             "aaSorting": [],
-
-
-                            //"bProcessing": true,
-                            //"bServerSide": true,
-                            //"sAjaxSource": "http://127.0.0.1/table.php"	,
-
-                            //,
-                            //"sScrollY": "200px",
-                            //"bPaginate": false,
-
-                            //"sScrollX": "100%",
-                            //"sScrollXInner": "120%",
-                            //"bScrollCollapse": true,
-                            //Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-                            //you may want to wrap the table inside a "div.dataTables_borderWrap" element
-
-                            //"iDisplayLength": 50
-
                             fheaderCallback: function (head, data, start, end, display) {
                                 head.getElementsByTagName('th')[0].innerHTML = "显示 " + (end - start) + " 条记录";
                             },

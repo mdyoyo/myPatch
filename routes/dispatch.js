@@ -10,7 +10,7 @@ var fs = require('fs');
 //给getPatchAndroid请求返回响应 params包括基线版本 设备号 android版本
 //getPatchAndroid?devid=xxx&appver=19_areading_3.9.0
 exports.getDispatchVer = function (req, resp, next) {
-    console.log('patch包详情页');
+    console.log('收到getPatchAndroid请求');
     //解析客户端传来的请求参数,包括
     console.log(req.query.devid);
     var devid = req.query.devid.toString();
@@ -72,7 +72,7 @@ exports.getDispatchInfo = function (req, resp) {
         return resp.send(JSON.stringify({ ret: -1 }));
     }
     PatchDAO.findDispatchedVersion(patchVersion, function (result) {
-        console.log('find patch by version success');
+        console.log('给getPatchAndroid 回复 find patch by version success');
         console.log(result);
         var patch_info;
         if (result != null && result.info_addr != null) {

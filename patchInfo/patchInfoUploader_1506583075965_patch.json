@@ -1,0 +1,48 @@
+{
+  "ret": 0,
+  "url": "http://101.236.31.218:80/upload/fileUploader_1506581570809_patchdiff.zip",
+  "new": [
+    {
+      "name": "classes2.dex",
+      "md5": "KpqX70mAcLEvlNeYOUPYQ0LdGMRIho6cH8/Q+fA66l2TP5uUFoXi7oFH2a7Z4/8xcI/6VaaBEfaLRffnpl0JRpTl0JvU9HR3eWmuHADd9Two9mF8cv8K5wF5Bf6yvj2NPwQ0p9ZiPW96g/OIqvQOmw+21+8CUss3rSlvg4UQSXsDbBrm/VNaLxMqhfXfJ27uj5NAMHhVBfZrxREtFO/bOjBVVbludoj0T7AoeP495nvpG58kcImW/q92mWQin7tyPP+a49JEL5yjm2l3EoQVhRTWBACOinPtSvzyUDIplQ68vGCUOW9vgzgLVhMCHG926VDxu63ySEW55t1h7fyo1Q=="
+    },
+    {
+      "name": "classes3.dex",
+      "md5": "CCZ+o681A4ZyTbVl3DgTEpIhEhlD+IAgMfCMMJe3bL+PK/mwwu+u4Yj4vZl81Vf8Psrg6mX7d/c2Xl6zi8G20aB1XkBrMkzrUTZg/iMASPujqdLvql8RrUBoIDQG6iKOvxJueS1ItodVttyMfRgq433m8dsMmCzjPill1JkQMUI+EvBEBUiSexJX7nY45bwln0BX0xIhz+XKURhxv1g6ZrwvP0z6rIjMWNipAsawoc/reXWkeOEGr/mhpUH5lW6Jo0fB9+EPleVgGkle/B83oR05aZVEzmQBR+bRsaz+12osyRoMXZFEsyv0jTEN8A1vFwyDKGDXZuNFShGcQxU7kA=="
+    },
+    {
+      "name": "classes4.dex",
+      "md5": "De4Yq6/ARTzfamml1jfy5GvdgmyfDASvVQ1PfK3aBuRh+ZAsnTB0dNst5zqSnMi/jkQah6hkwlBUeec+uaLjwNi5zifzxCzsxTpn8Dmh4QkgwsL23rSpbQMKdYwCprPVI3uDr1DIC5qKPfEjGeXYfHCj2ShJO25GOiaN9DitxDyUY6HtPFMqvvohGCmk346hlZAbdSDd96aLFxfAaf4O7S9TBDwDSq7EJr9mmjT6Aa35VKI9kIwqXcnDEwlb29RCGpLrK92CbuOgwob8BpZy1Nem9nInMNbzbox7uq5krAFL4yUyITYYbNc+un0qj7oNUserf6fEvU5ijEqFlmkGwg=="
+    },
+    {
+      "name": "classes.dex",
+      "md5": "CclUV6wT2yAQ9n6Kw3wpzZCrAYkWk9ZetTSPenHknhr1i943ICNZ1dwVF6vIeGjYfKvnq0r7btoEa7vbQ/Uq90pukRmX1a5cDyKzWg+bt7PcEotkrRE1MCHoXNWWThmp1hShgToGIVEvZdnzLzm5X2Egy+CL7CAjyom77R0y/QTk4E6UTG5Zyg8fH37SgRxRm4VstOhxxN2arFOsdtoXDHIcw0s67OJ94Xr1gcVxhSZ1pVlYpMycE8QSHL2NqtEGKcnWt4szyrLyZxLz0nu7TVVfPi7U3t84R+wXRQ5ty3Lw8jlUcoL/hUGAIUDnZGcJYEFBMXOlsmW7Bij3sBC6mA=="
+    }
+  ],
+  "old": [
+    {
+      "name": "classes2.dex",
+      "md5": "2e05b437a1647cfd990aee53f7bb4ca1"
+    },
+    {
+      "name": "classes3.dex",
+      "md5": "fa3520ea8ff2c92e3537f1175550fe80"
+    },
+    {
+      "name": "classes4.dex",
+      "md5": "46438d123692e593fcfc507fdc66e3d1"
+    },
+    {
+      "name": "classes.dex",
+      "md5": "e602a3bce5a41e1f1c9e629b444f53ce"
+    }
+  ],
+  "diffMethod": 1,
+  "patchType": 1,
+  "isForceInstall": true,
+  "version": "3111",
+  "versionName": "3.1.11",
+  "open": 1,
+  "patchPackageMd5": "18e76a3ee83c36720a4e192da5152b82",
+  "size": 106416
+}

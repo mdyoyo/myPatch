@@ -1,6 +1,10 @@
 var Stat = require('../models/Statistics.js').Stat;
 var StatDAO = function() {};
 
+StatDAO.prototype.insertMultiVersion = function (obj, success, fail) {
+    Stat.bulkCreate(obj).then(success).catch(fail);
+};
+
 StatDAO.prototype.addNewVersion = function(obj, success, fail) {
     Stat.create({
         eventId: obj.eventId,         //事件id
@@ -18,4 +22,11 @@ StatDAO.prototype.addNewVersion = function(obj, success, fail) {
     }).then(success).catch(fail);
 };
 
+StatDAO.prototype.findByPatchVersion = function(obj, success, fail) {
+    Stat.findAll({
+        where: {
+            key_patch_version: obj.toString(),
+        }
+    }).then(success).catch(fail);
+};
 module.exports = new StatDAO();

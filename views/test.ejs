@@ -11,7 +11,7 @@
     <script>
         function doAdd() {
             console.log('hha');
-            var data = {
+            var data = [{
                 eventId: 'id_download_patch_success',         //事件id
                 key_appversion: '0.1.1', //基线版本
                 key_patch_version:  '0.1.11',   //patch版本
@@ -24,8 +24,9 @@
                 key_error_msg: '',   //错误信息
                 key_patch_time: '',  //时间上报
                 patch_success_version: ''  //成功version
-            };
-            $.post('reportPatchLog', {data : data});
+            }];
+            var data2 = [{"key_devid":"864682031873698","eventId":"id_download_patch_success","key_targetsdk":"19","key_patch_version":"3.1.11","key_storage_size":"106103832576","key_apptype":"android","key_error_code":"204","key_hw":"HUAWEI_LON_AL00_HWLON_7.0_HUAWEILON_AL00_C00B225_user_release_keys","key_etime":"2017-09-28 16:16:43","key_networktype":"wifi","key_appversion":"3.1.1","key_appver":"24_android_3.1.1","key_patchsdkver":"0.3"},{"key_devid":"864682031873698","eventId":"id_diff_so_error","key_targetsdk":"19","key_patch_version":"3.1.11","key_storage_size":"106084753408","key_apptype":"android","key_error_msg":"mergePatchDex_ so load fail java.lang.UnsatisfiedLinkError: No implementation found for int com.tencent.sigma.patch.utils.PatchUtils.mergePatch(java.lang.String_ java.lang.String_ java.lang.String) (tried Java_com_tencent_sigma_patch_utils_PatchUtils_mergePatch and Java_com_tencent_sigma_patch_utils_PatchUtils_mergePatch__Ljava_lang_String_2Ljava_lang_String_2Ljava_lang_String_2)\n\tat com.tencent.sigma.patch.utils.PatchUtils.mergePatch(Native Method)\n\tat com.tencent.sigma.patch.utils.PatchUtils.ʻ(PatchUtils.java:51)\n\tat com.tencent.sigma.patch.e.e.ʻ(MergeDexTask.java:98)\n\tat com.tencent.sigma.patch.e.d.run(HotPatchTask.java:40)\n\tat android.os.Handler.handleCallback(Handler.java:761)\n\tat android.os.Handler.dispatchMessage(Handler.java:98)\n\tat android.os.Looper.loop(Looper.java:156)\n\tat android.os.HandlerThread.run(HandlerThread.java:61)\n","key_error_code":"104","key_hw":"HUAWEI_LON_AL00_HWLON_7.0_HUAWEILON_AL00_C00B225_user_release_keys","key_networktype":"wifi","key_etime":"2017-09-28 16:16:43","key_appversion":"3.1.1","key_appver":"24_android_3.1.1","key_patchsdkver":"0.3"}];
+            $.post('reportPatchLog', {data : data2});
         }
     </script>
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>

@@ -15,7 +15,7 @@ var Stat = sequelize.define('stat', {
     key_hw: Sequelize.STRING(200),         //硬件信息
     key_storage_size: Sequelize.STRING(45),//剩余可用空间
     key_error_code: Sequelize.STRING(5),   //错误码
-    key_error_msg: Sequelize.STRING(45),   //错误信息
+    key_error_msg: Sequelize.STRING(500),   //错误信息
     key_patch_time: Sequelize.STRING(45),  //时间上报
     patch_success_version: Sequelize.STRING(10)  //成功version
 }, {

@@ -71,11 +71,11 @@ exports.getDispatchInfo = function (req, resp) {
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: -1 }));
     }
-    PatchDAO.findOneVersion(patchVersion, function (result) {
+    PatchDAO.findDispatchedVersion(patchVersion, function (result) {
         console.log('find patch by version success');
         console.log(result);
         var patch_info;
-        if (result.info_addr != null) {
+        if (result != null && result.info_addr != null) {
             patch_info = JSON.parse(fs.readFileSync(result.info_addr));
             resp.setHeader('Content-Type', 'application/json');
             return resp.send(JSON.stringify(patch_info));

@@ -25,11 +25,19 @@ PatchDAO.prototype.addNewPatch = function (obj, success, fail) {
     }).then(success).catch(fail);
 };
 
-PatchDAO.prototype.findOneVersion = function (obj, success, fail) {
+PatchDAO.prototype.findDispatchedVersion = function (obj, success, fail) {
     Patch.findOne({
         where: {
             version: obj.toString(),
             status: 1
+        }
+    }).then(success).catch(fail);
+};
+
+PatchDAO.prototype.findOneVersion = function (obj, success, fail) {
+    Patch.findOne({
+        where: {
+            version: obj.toString(),
         }
     }).then(success).catch(fail);
 };

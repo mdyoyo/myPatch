@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1b1ec770-33d3-4bee-bc06-d3e1e12606d5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/data/visualize.ejs" afterPath="$PROJECT_DIR$/views/data/visualize.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myPatch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,10 +72,10 @@
       <file leaf-file-name="visualize.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47663552">
-              <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.7383177">
+              <caret line="233" column="36" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
               <folding>
-                <marker date="1506667462000" expanded="true" signature="6875:6978" placeholder="..." />
+                <marker date="1506667984000" expanded="true" signature="6885:6988" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -102,21 +101,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDAO.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/UserDAO.js">
+      <file leaf-file-name="Statistics.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/Statistics.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+              <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PatchDAO.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/PatchDAO.js">
+      <file leaf-file-name="UserDAO.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dao/UserDAO.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -178,7 +177,7 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="82" />
+    <option name="x" value="256" />
     <option name="y" value="23" />
     <option name="width" value="998" />
     <option name="height" value="709" />
@@ -370,7 +369,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="82" y="23" width="998" height="709" extended-state="0" />
+    <frame x="256" y="23" width="998" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25588536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -721,14 +720,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Statistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45293072">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/DispatchDAO.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -831,12 +822,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/Statistics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47663552">
-          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.7383177">
+          <caret line="233" column="36" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
           <folding>
-            <marker date="1506667462000" expanded="true" signature="6875:6978" placeholder="..." />
+            <marker date="1506667984000" expanded="true" signature="6885:6988" placeholder="..." />
           </folding>
         </state>
       </provider>

@@ -92,7 +92,7 @@
                                     <th>错误码</th>
                                     <th>错误信息</th>
                                     <th>时长</th>
-                                    <th>成功版本</th>
+                                    <!--<th>成功版本</th>-->
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,7 +111,7 @@
                                     <td><%= stat.key_error_code%></td>
                                     <td><%= stat.key_error_msg%></td>
                                     <td><%= stat.key_patch_time%></td>
-                                    <td><%= stat.patch_success_version%></td>
+                                    <!--<td><stat.patch_success_version></td>-->
                                 </tr>
                                 <% }) %>
                                 </tbody>
@@ -231,8 +231,7 @@
                                 null,
                                 null,
                                 {"bSortable": false },
-                                null,
-                                { "bSortable": false }
+                                null
                             ],
                             "aaSorting": [],
                             "language": {
@@ -280,8 +279,19 @@
 
         var defaultColvisAction = myTable.button(0).action();
         myTable.button(0).action(function (e, dt, button, config) {
+
             defaultColvisAction(e, dt, button, config);
+
+
+            if($('.dt-button-collection > .dropdown-menu').length == 0) {
+                $('.dt-button-collection')
+                        .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+                        .find('a').attr('href', '#').wrap("<li />")
+            }
+            $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
         });
+
+        ////
 
         setTimeout(function() {
             $($('.tableTools-container')).find('a.dt-button').each(function() {

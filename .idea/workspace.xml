@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b1ec770-33d3-4bee-bc06-d3e1e12606d5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/version/baseDetail.ejs" afterPath="$PROJECT_DIR$/views/version/baseDetail.ejs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/patch.js" afterPath="$PROJECT_DIR$/routes/patch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/stat.js" afterPath="$PROJECT_DIR$/routes/stat.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/data/visualize.ejs" afterPath="$PROJECT_DIR$/views/data/visualize.ejs" />
     </list>
     <ignored path="myPatch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,13 +57,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="patch.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="patch.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/patch.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.48135">
+            <state vertical-scroll-proportion="0.0">
               <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
               <folding>
                 <element signature="e#1539#1742#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="visualize.ejs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.5158879">
+              <caret line="270" column="18" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
+              <folding>
+                <marker date="1506652614000" expanded="true" signature="7597:7700" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -124,16 +133,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DispatchDAO.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dao/DispatchDAO.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -163,12 +162,12 @@
         <option value="$PROJECT_DIR$/views/version/patchDetail.ejs" />
         <option value="$PROJECT_DIR$/views/version/manage.ejs" />
         <option value="$PROJECT_DIR$/public/css/common.css" />
-        <option value="$PROJECT_DIR$/views/data/visualize.ejs" />
         <option value="$PROJECT_DIR$/dao/StatDAO.js" />
         <option value="$PROJECT_DIR$/routes/stat.js" />
         <option value="$PROJECT_DIR$/routes/patch.js" />
         <option value="$PROJECT_DIR$/views/version/baseDetail.ejs" />
         <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/views/data/visualize.ejs" />
       </list>
     </option>
   </component>
@@ -257,6 +256,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myPatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="myPatch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -697,18 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.69719625">
-          <caret line="133" column="22" selection-start-line="133" selection-start-column="22" selection-end-line="133" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1506595468000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dao/BaseDAO.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -821,10 +826,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/patch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.48135">
+        <state vertical-scroll-proportion="0.0">
           <caret line="79" column="12" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
           <folding>
             <element signature="e#1539#1742#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5158879">
+          <caret line="270" column="18" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
+          <folding>
+            <marker date="1506652614000" expanded="true" signature="7597:7700" placeholder="..." />
           </folding>
         </state>
       </provider>

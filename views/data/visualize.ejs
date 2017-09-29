@@ -92,7 +92,7 @@
                                     <th>错误码</th>
                                     <th>错误信息</th>
                                     <th>时长</th>
-                                    <!--<th>成功版本</th>-->
+                                    <th>成功版本</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -111,7 +111,7 @@
                                     <td><%= stat.key_error_code%></td>
                                     <td><%= stat.key_error_msg%></td>
                                     <td><%= stat.key_patch_time%></td>
-                                    <!--<td><stat.patch_success_version></td>-->
+                                    <td><%= stat.patch_success_version%></td>
                                 </tr>
                                 <% }) %>
                                 </tbody>
@@ -231,7 +231,8 @@
                                 null,
                                 null,
                                 {"bSortable": false },
-                                null
+                                null,
+                                { "bSortable": false }
                             ],
                             "aaSorting": [],
                             "language": {

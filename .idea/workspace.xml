@@ -72,10 +72,10 @@
       <file leaf-file-name="visualize.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7383177">
-              <caret line="233" column="36" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.6336449">
+              <caret line="113" column="77" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="77" />
               <folding>
-                <marker date="1506667984000" expanded="true" signature="6885:6988" placeholder="..." />
+                <marker date="1506668193000" expanded="true" signature="6875:6978" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -832,10 +832,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7383177">
-          <caret line="233" column="36" selection-start-line="233" selection-start-column="36" selection-end-line="233" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.6336449">
+          <caret line="113" column="77" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="77" />
           <folding>
-            <marker date="1506667984000" expanded="true" signature="6885:6988" placeholder="..." />
+            <marker date="1506668193000" expanded="true" signature="6875:6978" placeholder="..." />
           </folding>
         </state>
       </provider>

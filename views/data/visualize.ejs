@@ -81,12 +81,6 @@
                                     style="table-layout: fixed;">
                                 <thead>
                                 <tr>
-                                    <th class="center">
-                                        <label class="pos-rel">
-                                            <input type="checkbox" class="ace"/>
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </th>
                                     <th>事件id</th>
                                     <th class="hidden-720 hidden-480">基线版本</th>
                                     <th>patch版本</th>
@@ -106,12 +100,6 @@
                                     statList.forEach(function(stat) {
                                 %>
                                 <tr class="myTr">
-                                    <td class="center">
-                                        <label class="pos-rel">
-                                            <input type="checkbox" class="ace"/>
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </td>
                                     <td><a href="/baseDetail"><%= stat.eventId%></a></td>
                                     <td class="hidden-720 hidden-480"><%= stat.key_appversion%></td>
                                     <td><%= stat.key_patch_version%></td>
@@ -123,7 +111,7 @@
                                     <td><%= stat.key_error_code%></td>
                                     <td><%= stat.key_error_msg%></td>
                                     <td><%= stat.key_patch_time%></td>
-                                    <td><%= stat.key_success_version%></td>
+                                    <td><%= stat.patch_success_version%></td>
                                 </tr>
                                 <% }) %>
                                 </tbody>
@@ -236,7 +224,6 @@
                                 { "bSortable": false },
                                 { "bSortable": false },
                                 { "bSortable": false },
-                                { "bSortable": false },
                                 null,
                                 null,
                                 { "bSortable": false },
@@ -278,11 +265,6 @@
                     "extend": "excel",
                     "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>导出到Excel</span>",
                     "className": "btn btn-white btn-primary btn-bold"
-                },
-                {
-                    "extend": "pdf",
-                    "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
-                    "className": "btn btn-white btn-primary btn-bold"
                 }
             ]
         } );
@@ -298,19 +280,8 @@
 
         var defaultColvisAction = myTable.button(0).action();
         myTable.button(0).action(function (e, dt, button, config) {
-
             defaultColvisAction(e, dt, button, config);
-
-
-            if($('.dt-button-collection > .dropdown-menu').length == 0) {
-                $('.dt-button-collection')
-                        .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
-                        .find('a').attr('href', '#').wrap("<li />")
-            }
-            $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
         });
-
-        ////
 
         setTimeout(function() {
             $($('.tableTools-container')).find('a.dt-button').each(function() {
@@ -319,39 +290,6 @@
                 else $(this).tooltip({container: 'body', title: $(this).text()});
             });
         }, 500);
-
-        myTable.on( 'select', function ( e, dt, type, index ) {
-            if ( type === 'row' ) {
-                $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
-            }
-        } );
-        myTable.on( 'deselect', function ( e, dt, type, index ) {
-            if ( type === 'row' ) {
-                $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
-            }
-        } );
-
-        /////////////////////////////////
-        //table checkboxes
-        $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
-
-        //select/deselect all rows according to table header checkbox
-        $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
-            var th_checked = this.checked;//checkbox inside "TH" table header
-
-            $('#dynamic-table').find('tbody > tr').each(function(){
-                var row = this;
-                if(th_checked) myTable.row(row).select();
-                else  myTable.row(row).deselect();
-            });
-        });
-
-        //select/deselect a row when the checkbox is checked/unchecked
-        $('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
-            var row = $(this).closest('tr').get(0);
-            if(!this.checked) myTable.row(row).deselect();
-            else myTable.row(row).select();
-        });
 
         $(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
             e.stopImmediatePropagation();
@@ -381,23 +319,3 @@
 <script type="text/javascript"> ace.vars['base'] = '..'; </script>
 </body>
 </html>
-<!--<tr class="myTr">-->
-    <!--<td class="center">-->
-        <!--<label class="pos-rel">-->
-            <!--<input type="checkbox" class="ace"/>-->
-            <!--<span class="lbl"></span>-->
-        <!--</label>-->
-    <!--</td>-->
-    <!--<td><a href="/baseDetail">id_download_patch_success</a></td>-->
-    <!--<td class="hidden-720 hidden-480">3.1.1</td>-->
-    <!--<td>3.1.1</td>-->
-    <!--<td class="hidden-480">2017-09-28 16:16:43</td>-->
-    <!--<td class="hidden-720 hidden-480">19</td>-->
-    <!--<td>864682031873698</td>-->
-    <!--<td class="hidden-720">HUAWEI_LON_AL00_HWLON_7.0_HUAWEILON_AL00_C00B225</td>-->
-    <!--<td class="hidden-720 hidden-480">106103832576</td>-->
-    <!--<td>204</td>-->
-    <!--<td></td>-->
-    <!--<td></td>-->
-    <!--<td></td>-->
-<!--</tr>-->

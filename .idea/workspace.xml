@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1b1ec770-33d3-4bee-bc06-d3e1e12606d5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/data/visualize.ejs" afterPath="$PROJECT_DIR$/views/data/visualize.ejs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myPatch.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,7 +37,7 @@
       <file leaf-file-name="baseDetail.ejs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/version/baseDetail.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.392857">
+            <state vertical-scroll-proportion="17.607143">
               <caret line="104" column="53" selection-start-line="104" selection-start-column="53" selection-end-line="104" selection-end-column="53" />
               <folding>
                 <marker date="1506621009000" expanded="true" signature="15301:15408" placeholder="..." />
@@ -72,10 +73,10 @@
       <file leaf-file-name="visualize.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.5158879">
-              <caret line="270" column="18" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.47663552">
+              <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
               <folding>
-                <marker date="1506652614000" expanded="true" signature="7597:7700" placeholder="..." />
+                <marker date="1506667462000" expanded="true" signature="6875:6978" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -125,10 +126,8 @@
         <entry file="file://$PROJECT_DIR$/dao/StatDAO.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-              <folding>
-                <element signature="e#272#964#0" expanded="false" />
-              </folding>
+              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -746,16 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dao/StatDAO.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding>
-            <element signature="e#272#964#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/test.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3719626">
@@ -804,16 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/version/baseDetail.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.392857">
-          <caret line="104" column="53" selection-start-line="104" selection-start-column="53" selection-end-line="104" selection-end-column="53" />
-          <folding>
-            <marker date="1506621009000" expanded="true" signature="15301:15408" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/stat.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -834,12 +813,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/version/baseDetail.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="17.607143">
+          <caret line="104" column="53" selection-start-line="104" selection-start-column="53" selection-end-line="104" selection-end-column="53" />
+          <folding>
+            <marker date="1506621009000" expanded="true" signature="15301:15408" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dao/StatDAO.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/data/visualize.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5158879">
-          <caret line="270" column="18" selection-start-line="270" selection-start-column="18" selection-end-line="270" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.47663552">
+          <caret line="105" column="40" selection-start-line="105" selection-start-column="40" selection-end-line="105" selection-end-column="40" />
           <folding>
-            <marker date="1506652614000" expanded="true" signature="7597:7700" placeholder="..." />
+            <marker date="1506667462000" expanded="true" signature="6875:6978" placeholder="..." />
           </folding>
         </state>
       </provider>

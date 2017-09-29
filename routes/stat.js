@@ -7,11 +7,11 @@ exports.receiveAnEvent = function (req, resp) {
     console.log('收到上报');
     var bodyParams = req.body.data;
     console.log('参数,', bodyParams);
-    var jsonString = JSON.stringify(bodyParams);
+    var jsonString = eval(bodyParams);
     console.log('trans ,', jsonString);
-    var jsonObj = JSON.parse(jsonString);
-    console.log('trans to jsonArray,', jsonObj);
-    StatDAO.insertMultiVersion(jsonObj, function (result) {
+    //var jsonObj = JSON.parse(jsonString);
+    //console.log('trans to jsonArray,', jsonObj);
+    StatDAO.insertMultiVersion(jsonString, function (result) {
         console.log('add stat data to db success', result);
         resp.setHeader('Content-Type', 'application/json');
         return resp.send(JSON.stringify({ ret: 0 }));
@@ -39,7 +39,7 @@ exports.showStatByPatchVersion = function (req, resp) {
             statList: result
         });
     }, function (err) {
-        console.log('find stat by patch version success, ', result);
+        console.log('find stat by patch version failed, ', err);
         if (result == null) {
             return resp.render('data/visualize', {
                 user: req.session.user,

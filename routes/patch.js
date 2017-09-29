@@ -1,4 +1,3 @@
-var BaseDAO = require('../dao/BaseDAO.js');
 var PatchDAO = require('../dao/PatchDAO.js');
 var CONFIG = require('../config.js');
 var moment = require('moment');

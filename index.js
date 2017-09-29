@@ -64,7 +64,7 @@ app.get('/addBaseVersion', baseRouter.addNewBaseVersion);
 app.use("/baseDetail/:_baseVersion",patchRouter.getPatchListInfo);
 app.get("/baseDetail/:_baseVersion", baseRouter.showBaseDetail);
 
-app.post('/baseDetail/api/Upload', upload.single('fileUploader'),
+app.post('/uploadPatch', upload.single('fileUploader'),
     patchRouter.uploadPatch);
 app.post('/uploadPatchInfo', upload.single('patchInfoUploader'),
     patchRouter.uploadPatchInfo);
